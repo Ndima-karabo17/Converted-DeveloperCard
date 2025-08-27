@@ -1,4 +1,4 @@
-Create a new branch task-7-2 from your Task 6.2 repo using git checkout -b task-7-2.
+Created a new branch task-7-2 from your Task 6.2 repo using git checkout -b task-7-2.
 
 Set up TypeScript with npm init -y, install TypeScript, and configure tsconfig.json as required.
 
