@@ -1,0 +1,184 @@
+class DevCardManager {
+  constructor(developers) {
+    this.developers = developers;
+    this.root = document.getElementById('root');
+  }
+
+  createCardHTML(developer) {
+    const email = developer.email.replace(/^mailto:/, '');
+    return `
+      <div class="card ${developer.isActive ? 'active' : 'inactive'}">
+        <img src="${developer.pictureUrl}" alt="${developer.username}" class="avatar">
+        <h2>${developer.username}</h2>
+        <p><strong>Experience:</strong> ${developer.yearsExperience} years</p>
+        <p><strong>Status:</strong> ${developer.isActive ? 'Active' : 'Inactive'}</p>
+        <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+        <p><strong>Phone:</strong> ${developer.phone}</p>
+        <p><strong>Skills:</strong> <span class="skills">${developer.skills.map(skill => `<span>${skill}</span>`).join('')}</span></p>
+        <p class="bio">${developer.bio}</p>
+      </div>
+    `;
+  }
+
+  displayAllCards() {
+    const cardsHTML = this.developers.map(dev => this.createCardHTML(dev)).join('');
+    this.root.innerHTML = cardsHTML;
+  }
+}
+
+const data = {
+
+    "Developers" :[
+        {
+    "devID": 1,
+    "username": "codeNinja",
+    "yearsExperience": 5.5,
+    "isActive": true,
+    "pictureUrl": "https://api.dicebear.com/9.x/adventurer/svg?seed=Alexander",
+    "email": "ninja@example.com",
+    "phone": "123-456-7889",
+    "skills": ["JavaScript", "React", "Node.js"],
+    "bio": "A full-stack specialist with 5.5 years of experience, codeNinja excels at building modern, responsive web applications using JavaScript, React, and Node.js."
+},
+
+{
+"devID": 2,
+    "username": "byteMaster",
+    "yearsExperience": 8,
+    "isActive": true,
+    "pictureUrl": "https://api.dicebear.com/9.x/adventurer/svg?seed=Mackenzie",
+    "email": "master@example.com",
+    "phone": "667-372-5555",
+    "skills": ["Python", "Django", "SQL"],
+    "bio": "With 8 years in the field, byteMaster is a Python and Django expert, skilled in creating robust back-end systems and managing complex databases with SQL."
+    
+},
+{
+  "devID": 3,
+    "username": "logicLord",
+    "yearsExperience": 12.2,
+    "isActive": false,
+    "pictureUrl": "https://api.dicebear.com/9.x/adventurer/svg?seed=Brian",
+    "email": "lord@example.com",
+    "phone": "234-567-8901",
+    "skills": ["Java", "Spring", "AWS"],
+    "bio": "A seasoned architect with over 12 years of experience, logicLord specializes in large-scale enterprise solutions using Java, Spring, and AWS. Currently on a sabbatical"
+      
+},
+{
+   "devID": 4,
+    "username": "scriptKid",
+    "yearsExperience": 0.5,
+    "isActive": true,
+    "pictureUrl": "https://api.dicebear.com/9.x/adventurer/svg?seed=Eden",
+    "email": "scripts@example.com",
+    "phone": "397-223-9883",
+    "skills": ["HTML", "CSS"],
+    "bio": "Eager and new to the scene, scriptKid has spent the last 6 months mastering the foundational web technologies of HTML and CSS to build clean, static websites."
+      
+ 
+},
+{
+     "devID": 5,
+    "username": "dataDiva",
+    "yearsExperience": 4,
+    "isActive": true,
+    "pictureUrl": "https://api.dicebear.com/9.x/adventurer/svg?seed=Adrian",
+    "email": "diva@example.com",
+    "phone": "345-678-9012",
+    "skills": ["R", "Python", "Tableau", "SQL"],
+    "bio": "A data-driven developer with 4 years of experience, dataDiva translates complex datasets into actionable insights using R, Python, and Tableau."
+      
+},
+{
+     "devID": 6,
+    "username": "kernelKing",
+    "yearsExperience": 20,
+    "isActive": false,
+    "pictureUrl": "https://api.dicebear.com/9.x/adventurer/svg?seed=Leah",
+    "email": "mailto:king@example.com",
+    "phone": "349-733-9844",
+    "skills": ["C", "Linux", "Assembly"],
+    "bio": "A true veteran with two decades of experience, kernelKing is a master of low-level systems programming, working with C, Linux, and Assembly. Currently retired from active projects."
+      
+},
+{
+     "devID": 7,
+    "username": "polyglotPro",
+    "yearsExperience": 7,
+    "isActive": true,
+    "pictureUrl": "https://api.dicebear.com/9.x/adventurer/svg?seed=Riley",
+    "email": "mailto:pro@example.com",
+    "phone": "456-789-0124",
+    "skills": ["Go", "Rust", "Python", "JS"],
+    "bio": "A versatile programmer with 7 years of experience, polyglotPro is fluent in multiple languages, including Go, Rust, and Python, tackling a wide range of programming challenges."
+      
+},
+{
+     "devID": 8,
+    "username": "debugDemon",
+    "yearsExperience": 3.8,
+    "isActive": true,
+    "pictureUrl": "https://api.dicebear.com/9.x/adventurer/svg?seed=Andrea",
+    "email": "mailto:demon@example.com",
+    "phone": "567-890-1234",
+    "skills": ["JavaScript", "Jest","Cypress"],
+    "bio": "With a keen eye for detail and 3.8 years of experience, debugDemon ensures rock-solid code quality by specializing in JavaScript testing frameworks like Jest and Cypress."
+      
+},
+{
+     "devID": 9,
+    "username": "cloudCommando",
+    "yearsExperience": 6,
+    "isActive": true,
+    "pictureUrl": "https://api.dicebear.com/9.x/adventurer/svg?seed=Vivian",
+    "email": "mailto:commando@example.com",
+    "phone": "678-901-2345",
+    "skills": ["Terraform", "Azure","Docker"],
+    "bio": "A cloud infrastructure expert with 6 years of experience, cloudCommando excels at automating deployments on Azure using Terraform and Docker."
+      
+},
+{
+     "devID": 10,
+    "username": "frontendFox",
+    "yearsExperience": 2.1,
+    "isActive": true,
+    "pictureUrl": "https://api.dicebear.com/9.x/adventurer/svg?seed=Jack",
+    "email": "fox@example.com",
+    "phone": "733-833-2289",
+    "skills": ["Vue", "Sass","TypeScript"],
+    "bio": "A creative developer with just over 2 years of experience, frontendFox focuses on building beautiful and efficient user interfaces with Vue, Sass, and TypeScript."
+      
+},
+{
+     "devID": 11,
+    "username": "queryQueen",
+    "yearsExperience": 10,
+    "isActive": false,
+    "pictureUrl": "https://api.dicebear.com/9.x/adventurer/svg?seed=Sophia",
+    "email": "mailto:queen@example.com",
+    "phone": "789-012-3456",
+    "skills": ["SQL", "PostgreSQL","MongoDB"],
+    "bio": "A database authority with a decade of experience, queryQueen is an expert in designing and managing both SQL (PostgreSQL) and NoSQL (MongoDB) database systems. Currently taking a break."
+      
+},
+{
+     "devID": 12,
+    "username": "apiArchitech",
+    "yearsExperience": 9,
+    "isActive": true,
+    "pictureUrl": "https://api.dicebear.com/9.x/adventurer/svg?seed=Sophia",
+    "email": "mailto:queen@example.com",
+    "phone": "890-123-4567",
+    "skills": ["C#", "NET", "REST", "GraphQL"],
+    "bio": "With 9 years of experience, apiArchitect specializes in designing and building scalable and efficient APIs using C#, .NET, REST, and GraphQL."
+      
+}
+    ]
+};
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const manager = new DevCardManager(data.Developers);
+  manager.displayAllCards();
+});
